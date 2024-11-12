@@ -1,0 +1,38 @@
+<mat-card class="card-header">
+  <mat-card-content class="header-content">
+    <div class="logo-div">
+      <a>
+        <img src="/assets/imgs/logo-header.png" alt="logo_upb" id="logo" />
+      </a>
+    </div>
+    <div class="dropdown-container">
+      <button mat-button class="nav-buttons" [class.light]="theme() === 'light'" [routerLink]="baseUrl">
+        <div class="dropdown">
+          <b>{{ siteName }}</b>
+        </div>
+      </button>
+    </div>
+    <div class="last-buttons">
+      <div class="change-theme">
+        <button class="theme-switch" type="button" aria-label="Toggle theme" mat-icon-button (click)="toggleTheme()"
+          matTooltip="Toggle theme">
+          <mat-icon>
+            {{ theme() === "light" ? "light_mode" : "dark_mode" }}
+          </mat-icon>
+        </button>
+      </div>
+      &nbsp;
+      <div class="login-button">
+        @if (isLogged) {
+        <button mat-flat-button class="tab-logout warn-button" (click)="logOut()">
+          <b>{{ "Cerrar sesión" }}</b>
+        </button>
+        } @else {
+        <button mat-flat-button class="tab-logout" [class.tab-logout-light]="theme() === 'light'" (click)="Onlogin()">
+          <b>{{ "Iniciar sesión" }}</b>
+        </button>
+        }
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,57 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluation Form</title>
+</head>
+<body>
+<div class="provider-info">
+    <h2>{{ providerName }}</h2>
+    <p>{{ providerNit }}</p>
+    <p>{{ providerType }} - {{ providerCategory }} - {{ providerPredecessor }}</p>
+</div>
+
+<div class="evaluation-section">
+    <label for="detail">Detalle  :</label>
+    <select id="detail" class="detail-select" [(ngModel)]="selectedOption">
+        <option value="">Seleccione una opción</option>
+        <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+    </select>
+</div>
+
+<div class="criteria">
+    <h3>{{ evaluationCriteria }}</h3>
+    <p class="response-count">Respuestas: {{ responseCount }}/{{ totalQuestions }}</p>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+    <div *ngFor="let question of questions" class="question">
+        <p>{{ question.text }}</p>
+        <div class="toggle">
+            <label for="toggle-{{ question.id }}" class="toggle-label">_____Aplica</label>
+            <!-- Checkbox for toggling applies property -->
+            <input 
+                type="checkbox" 
+                id="toggle-{{ question.id }}" 
+                [checked]="question.applies"
+                (change)="onAppliesChange($event, question)">
+
+
+
+            <span class="toggle-indicator"></span>
+        </div>
+        <div class="rating" [class.disabled]="!question.applies">
+            <ng-container *ngIf="question.applies; else noApplies">
+                <span *ngFor="let star of stars" 
+                      class="star" 
+                      [class.active]="isStarActive(question, star)" 
+                      (click)="rate(question, star)">☆</span>
+            </ng-container>
+            <ng-template #noApplies>
+                <span class="no-applies">No Aplica</span>
+            </ng-template>
+        </div>
+    </div>
+</div>
+
+
+<button class="save-button" (click)="saveEvaluation()">Guardar</button>
+</body>

@@ -1,0 +1,128 @@
+@import'colores.scss';
+@import "breakpoints.scss";
+
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-header {
+  box-shadow: 0rem 0.125rem 0.313rem $gray-dark-60;
+}
+
+.logo-div {
+  margin: 0.8rem 0;
+}
+
+#logo {
+  width: auto;
+  height: 2.813rem;
+  margin: 0.4rem;
+}
+
+.nav-buttons {
+  font-size: 1rem;
+}
+
+.nav-buttons.light {
+  --mdc-text-button-label-text-color: none;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+}
+
+.tab-logout {
+  font-size: 0.800rem;
+  border-radius: 0.938rem;
+  height: 2.8rem;
+}
+
+.header-content:first-child {
+  padding-top: 0.050rem;
+  padding-bottom: 0.050rem;
+}
+
+.login-button {
+  align-content: center;
+
+  .mat-accent {
+    color: $white;
+  }
+}
+
+.dropdown-container {
+  align-content: center;
+}
+
+.last-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media (max-width: #{map-get($grid-breakpoints, xm)}) {
+  #logo {
+    height: 2rem;
+  }
+
+  .dropdown {
+    font-size: 0.75rem;
+  }
+
+  .tab-logout {
+    font-size: 0.6rem;
+    border-radius: 0.938rem;
+    height: 2.3rem;
+  }
+}
+
+@media (max-width: #{map-get($grid-breakpoints, xs)}) {
+  #logo {
+    height: 1.8rem;
+  }
+
+  .header-content {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "theme logo dropdown"
+      "buttons buttons buttons";
+    align-items: center;
+  }
+
+  .header-content:first-child {
+    padding-top: 0rem;
+  }
+
+  .dropdown-container {
+    grid-area: dropdown;
+    padding-right: 0.3rem;
+  }
+
+  .logo-div {
+    grid-area: logo;
+    margin: 0.5rem 0 0.1rem 0;
+  }
+
+  .tab-logout {
+    font-size: 0.55rem;
+    height: 2rem;
+    width: min-content;
+  }
+
+  .last-buttons {
+    grid-area: buttons;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .change-theme {
+    grid-area: theme;
+    padding-left: 1.5rem;
+  }
+}

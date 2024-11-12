@@ -1,0 +1,55 @@
+@import'colores.scss';
+@import "breakpoints.scss";
+
+.card {
+  --mdc-elevated-card-container-shape: none;
+}
+.content {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: $white;
+  padding: 1rem;
+  min-height: 10vh;
+  box-sizing: border-box;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .texto {
+    font-size: 0.625rem;
+    text-align: justify;
+    max-width: 60%;
+  }
+
+  .fondo {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  #logotipo {
+    width: 110%;
+    max-width: 6.25rem;
+  }
+}
+
+@media (max-width: #{map-get($grid-breakpoints, xs)}) {
+  footer {
+    .texto {
+      font-size: 0.58rem;
+      max-width: none;
+    }
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  #logotipo {
+    margin-top: 0.2rem;
+  }
+}

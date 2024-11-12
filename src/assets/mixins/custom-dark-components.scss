@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+    .light-text {
+        color: mat.get-theme-color($theme, 'neutral', 90);
+    }
+    .light-title {
+        color: mat.get-theme-color($theme, 'neutral', 70);
+    }
+    .dark-text {
+        color: mat.get-theme-color($theme, 'neutral', 0);
+    }
+}

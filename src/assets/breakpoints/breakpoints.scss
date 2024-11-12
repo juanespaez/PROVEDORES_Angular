@@ -1,0 +1,12 @@
+$grid-breakpoints: (
+  xs: 319px + 1px,
+  xm: 453px + 1px,
+  sm: 576px + 1px,
+  md: 768px + 1px,
+  lg: 992px + 1px,
+  xl: 1200px + 1px,
+  xxl: 1300px + 1px,
+  xls: 1440px + 1px,
+  xlx: 1680px + 1px,
+  xlxx: 1920px + 1px
+) !default;

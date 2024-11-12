@@ -1,0 +1,69 @@
+<main>
+    <div class="left-column">
+      <section class="supplier-search">
+        <h2>Identifique el proveedor para empezar</h2>
+        <div class="search-box">
+          <label for="supplier-input">Nombre o NIT</label>
+          <input type="text" id="supplier-input" [(ngModel)]="supplierInput" (input)="searchSupplier()" placeholder="Input text">
+        </div>
+      </section>
+  
+      <section class="supplier-info" *ngIf="supplierInfo">
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Categoría</th>
+              <th>Predecesor</th>
+              <th>Evaluar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ supplierInfo.type }}</td>
+              <td>{{ supplierInfo.category }}</td>
+              <td>{{ supplierInfo.predecessor }}</td>
+              <td>
+                <a (click)="goToSupplierEvaluation()" class="btn">Evaluar</a>
+              </td>
+              
+              
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+    </div>
+  
+    <div class="right-column" *ngIf="evaluations.length > 0">
+      <section class="evaluations">
+        <h2>Evaluaciones realizadas</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Ejecutor</th>
+              <th>Fecha</th>
+              <th>Calificación</th>
+              <th>Predecesor</th>
+              <th>Proveedor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let evaluation of evaluations">
+              <td>{{ evaluation.executor }}</td>
+              <td>{{ evaluation.date }}</td>
+              <td>{{ evaluation.rating }}</td>
+              <td>{{ evaluation.predecessor }}</td>
+              <td>{{ evaluation.supplier }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+  
+  <!-- Status message -->
+  <div *ngIf="statusMessage" id="status-message">
+    {{ statusMessage }}
+  </div>
+  

@@ -1,0 +1,50 @@
+@use '@angular/material' as mat;
+@use './assets/mixins/custom-dark-components.scss' as dark-custom;
+@use './assets/mixins/warn-theme.scss' as warn-theme;
+@import "@ng-select/ng-select/themes/material.theme.css";
+
+@include mat.core();
+
+$light-theme: mat.define-theme(
+  (
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+  )
+);
+$dark-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: mat.$magenta-palette,
+      tertiary: mat.$violet-palette,
+    ),
+  )
+);
+
+
+html {
+  @include mat.all-component-themes($light-theme);
+  background: mat.get-theme-color($light-theme, surface);
+  @include warn-theme.color($light-theme);
+  &.dark {
+    @include mat.all-component-colors($dark-theme);
+    background: mat.get-theme-color($dark-theme, surface);
+    @include dark-custom.color($light-theme);
+  }
+}
+
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+  
+@font-face {
+    font-family: Avenir Next LT Pro;
+    src: url('./assets/fonts/AvenirNextLTPro-Regular.otf') format('truetype'),
+         url('./assets/fonts/AvenirNextLTPro-Bold.otf') format('truetype');
+  }
+
+*{font-family: Avenir Next LT Pro;}

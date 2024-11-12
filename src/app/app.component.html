@@ -1,0 +1,17 @@
+<div class="grid">
+    <app-header class="header" (loginOrLogoutEvent)="handleLoginOrLogoutEvent($event)"></app-header>
+    <!-- <div *ngIf="!showSpinner; else spinnerTemplate" class="content" [class.content-dark]="theme() === 'dark'"> -->
+    <div  class="content" [class.content-dark]="theme() === 'dark'">
+        <router-outlet></router-outlet>
+    </div>
+    <!-- <ng-template #spinnerTemplate>
+        <router-outlet></router-outlet>
+        <div class="spinner-container" [class.content-dark]="theme() === 'dark'">
+            <mat-spinner [diameter]="spinnerDiameter" color="primary"></mat-spinner>
+            <p class="loading-message light-text">Cargando...</p>
+        </div>
+    </ng-template> -->
+
+    <app-footer class="footer"></app-footer>
+</div>
+
